@@ -1,0 +1,83 @@
+<% layout('layout/boilerplate') %>
+    <div class="row">
+        <h1 class="text-center">Add Campground</h1>
+        <div class="col-md-6 offset-md-3">
+            <form action="/campgrounds" method="POST" novalidate class="validatedForm" enctype="multipart/form-data">
+                <div class="mb-2">
+                    <label class="form-label" for="title">Title</label>
+                    <input class="form-control" type="text" id="title" name="campground[title]" required>
+                    <div class="valid-feedback">Looks good</div>
+                    <div class="invalid-feedback">
+                        invalid input..
+                    </div>
+                </div>
+                <div class="mb-2">
+                    <label class="form-label" for="location">location</label>
+                    <input class="form-control" type="text" id="location" name="campground[location]" required>
+                    <div class="valid-feedback">Looks good</div>
+                    <div class="invalid-feedback">
+                        invalid input..
+                    </div>
+                </div>
+                <div class="mb-3 ">
+                    <label for="formFile" class="form-label">Add images</label>
+                    <input class="form-control" type="file" id="formFile" name="image" multiple>
+                </div>
+                <!-- <input type="file" name="image" id="" multiple> -->
+                <!-- <div class="mb-2">
+                    <label class="form-label" for="image">image url..</label>
+                    <input class="form-control" type="text" id="image" name="campground[image]" required>
+                    <div class="valid-feedback">Looks good</div>
+                    <div class="invalid-feedback">
+                        invalid input..
+                    </div>
+                </div> -->
+                <div class="mb-3">
+                    <label for="price">Price</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">$</span>
+                        <input type="text" class="form-control" name="campground[price]" id="price" placeholder="0.00" aria-label="price" aria-describedby="basic-addon1" required>
+                        <div class="valid-feedback">Looks Good</div>
+                        <div class="invalid-feedback">
+                            invalid input..
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-2">
+                    <label class="form-label" for="description">description</label>
+                    <textarea class="form-control" type="text" id="description" name="campground[description]" required></textarea>
+                    <div class="valid-feedback">Looks Good</div>
+                    <div class="invalid-feedback">
+                        invalid input..
+                    </div>
+                </div>
+                <div class="mb-3"> <button class="btn btn-info">Add Campground!</button></div>
+
+            </form>
+
+            <p><a href="/campgrounds">All campgrounds</a></p>
+        </div>
+    </div>
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function() {
+            'use strict'
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            const forms = document.querySelectorAll('.validatedForm')
+
+            // Loop over them and prevent submission
+            Array.from(forms)
+                .forEach(function(form) {
+                    form.addEventListener('submit', function(event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+        })()
+    </script>

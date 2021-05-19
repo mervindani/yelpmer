@@ -1,0 +1,25 @@
+#cluster-map {
+  width: 100%;
+  height: 350px;
+}
+#map {
+  width: 500px;
+  height: 300px;
+}
+
+.index-img {
+  height: 100%;
+}
+.show-img {
+  height: 300px;
+}
+@media (max-width: 516px) {
+  #map {
+    width: auto;
+  }
+}
+@media (min-width: 516px) and (max-width: 1025px) {
+  #map {
+    width: auto;
+  }
+}

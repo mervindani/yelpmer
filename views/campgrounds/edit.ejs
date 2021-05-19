@@ -1,0 +1,62 @@
+<% layout('layout/boilerplate')%>
+
+    <div class="row">
+        <h1 class="text-center">Edit Campground</h1>
+       <div class="col-md-6 offset-md-3">
+            <form action="/campgrounds/<%=campgrounds._id%>?_method=PUT" method="POST" novalidate class="needs-validation" enctype="multipart/form-data">
+                <div class="mb-2">
+                    <label class="form-label" for="title">Title</label>
+                    <input class="form-control" type="text" id="title" name="campground[title]" value="<%=campgrounds.title%>" required>
+                    <div class="valid-feedback">Looks good</div>
+                    <div class="invalid-feedback">
+                        invalid input..
+                    </div>
+                </div>
+                <div class="mb-2">
+                    <label class="form-label" for="location">location</label>
+                    <input class="form-control" type="text" id="location" name="campground[location]" value="<%=campgrounds.location%>" required>
+                    <div class="valid-feedback">Looks good</div>
+                    <div class="invalid-feedback">
+                        invalid input..
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">Add images</label>
+                    <input class="form-control" type="file" id="formFile" name="image" multiple>
+                </div>
+                <div class="mb-3">
+                    <label for="price">Price</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">$</span>
+                        <input type="text" class="form-control" name="campground[price]" id="price" value="<%=campgrounds.price%>" aria-label="price" aria-describedby="basic-addon1" required>
+                        <div class="valid-feedback">Looks good</div>
+                        <div class="invalid-feedback">
+                            invalid input..
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-2">
+                    <label class="form-label" for="description">description</label>
+                    <textarea class="form-control" type="text" id="description" name="campground[description]" required><%=campgrounds.description %> </textarea>
+                    <div class="valid-feedback">Looks good</div>
+                    <div class="invalid-feedback">
+                        invalid input..
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <% campgrounds.images.forEach(function(img,i){ %>
+                        <img src="<%=img.thumbnail%>" class="img-thumbnail">
+                        <div class="form-check-inline">
+                            <input type="checkbox" id="img-<%=i%>" name="deleteImages[]" value="<%=img.filename%>">
+                        </div>
+                        <label for="img-<%=i%>">Delete??</label>
+                        <%})%>
+                </div>
+                <div class="mb-3"> <button class="btn btn-success">Update Campground!</button></div>
+
+            </form>
+
+            <p><a href="/campgrounds">All campgrounds</a></p>
+        </div>
+    </div>
